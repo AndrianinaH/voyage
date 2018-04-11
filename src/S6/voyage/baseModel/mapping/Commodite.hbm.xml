@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="S6.voyage.baseModel.Commodite" table="commodite">
+        <meta attribute="class-description">
+            This class contains the commodite detail.
+        </meta>
+        <id name="id" type="int" column="id_commodite">
+            <generator class="identity">
+            	<param name="sequence">commodite_id_com_seq</param>
+            </generator>
+        </id>
+        <property name="nom_commodite" column="nom_commodite" type="string"/>
+       <!--  <bag name="list_hotel" table="hotel" inverse="false" lazy="false" fetch="select">
+        	<key>
+        		<column name="id_commodite" not-null="false"/>
+        	</key>
+        	<one-to-many class="S6.voyage.baseModel.Hotel"/>
+        </bag> -->
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="voyage" extends="struts-default">
+   		<!-- page d'accueil -->
+        <action name="index" class="indexAction" method="execute">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="find" class="indexAction" method="find">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="findByCommodite" class="indexAction" method="findByCommodite">
+            <result name="success">/index.jsp</result>
+            <result name="error">/index.jsp</result>
+        </action>
+        <!-- detail hotel -->
+        <action name="detailHotel" class="detailHotelAction" method="execute">
+            <result name="success">/detail_hotel.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="parse">false</param>
+           	</result>
+        </action>
+        <action name="reserverModal" class="detailHotelAction" method="reserverModal">
+            <result name="success">/detail_hotel.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="login">/login.jsp</result>
+        </action>
+        <action name="reserver" class="detailHotelAction" method="create">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/detail_hotel.jsp</result>
+           	<result name="login">/login.jsp</result>
+        </action>
+    </package>
+    <include file="S6/voyage/config/struts/admin_login_struts.xml"/>
+    <include file="S6/voyage/config/struts/destination_struts.xml"/>
+    <include file="S6/voyage/config/struts/hotel_struts.xml"/>
+    <include file="S6/voyage/config/struts/chambre_struts.xml"/>
+    <include file="S6/voyage/config/struts/commodite_struts.xml"/>
+    <include file="S6/voyage/config/struts/client_struts.xml"/>
+    <include file="S6/voyage/config/struts/reservation_struts.xml"/>
+    <include file="S6/voyage/config/struts/reservation_client_struts.xml"/>
+</struts>

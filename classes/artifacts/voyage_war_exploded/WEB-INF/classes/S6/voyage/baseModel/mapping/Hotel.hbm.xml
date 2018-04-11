@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="S6.voyage.baseModel.Hotel" table="hotel">
+        <meta attribute="class-description">
+            This class contains the hotel detail.
+        </meta>
+        <id name="id" type="int" column="id_hotel">
+            <!-- <generator class="identity">
+            	<param name="sequence">hotel_id_hotel_seq</param>
+            </generator> -->
+            <generator class="increment"/>
+        </id>
+        <property name="nom_hotel" column="nom_hotel" type="string"/>
+        <property name="description" column="description" type="string"/>
+        <property name="image" column="image" type="string"/>
+        <property name="id_destination" column="id_destination" type="int"/>
+        <property name="id_commodite" column="id_commodite" type="int"/>
+        <union-subclass name="S6.voyage.baseModel.HotelView" table="hotel_view">
+            <property name="nom_destination" column="nom_destination" type="string"/>
+            <property name="nom_commodite" column="nom_commodite" type="string"/>
+        </union-subclass>
+        
+        <!-- <many-to-one name="destination" class="S6.voyage.baseModel.Destination" column="id_destination" not-null="true" lazy="false"/>
+        <many-to-one name="commodite" class="S6.voyage.baseModel.Commodite" column="id_commodite" not-null="true" lazy="false"/> -->
+       <!--  <bag name="list_chambre" table="chambre" inverse="false" lazy="false" fetch="select">
+        	<key>
+        		<column name="id_hotel" not-null="false"/>
+        	</key>
+        	<one-to-many class="S6.voyage.baseModel.Chambre"/>
+        </bag> -->
+    </class>
+</hibernate-mapping>

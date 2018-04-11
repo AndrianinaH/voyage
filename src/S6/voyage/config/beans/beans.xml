@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	
+	
+	
+	<!-- Action -->
+	
+	<bean id="commoditeAction" class="S6.voyage.struts.CommoditeAction">
+    	<property name="filtreService" ref="filtreService" />
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    <bean id="indexAction" class="S6.voyage.struts.IndexAction">
+    	<property name="filtreService" ref="filtreService" />
+    	<property name="reservationService" ref="reservationService" />
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    <bean id="detailHotelAction" class="S6.voyage.struts.DetailHotelAction">
+    	<property name="filtreService" ref="filtreService" />
+    	<property name="reservationService" ref="reservationService" />
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    <bean id="chambreAction" class="S6.voyage.struts.ChambreAction">
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    <bean id="clientAction" class="S6.voyage.struts.ClientAction">
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    <bean id="destinationAction" class="S6.voyage.struts.DestinationAction">
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    <bean id="hotelAction" class="S6.voyage.struts.HotelAction">
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    <bean id="reservationAction" class="S6.voyage.struts.ReservationAction">
+    	<property name="baseService" ref="baseService" />
+    </bean>
+	
+	<!-- Service -->
+	
+    <bean id="filtreService" class="S6.voyage.service.FiltreService">
+    	<property name="hibernate" ref="hibernateDao" />
+    </bean>
+    <bean id="reservationService" class="S6.voyage.service.ReservationService">
+    	<property name="hibernate" ref="hibernateDao" />
+    </bean>
+
+</beans>

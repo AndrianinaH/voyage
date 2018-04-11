@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- autre service et action -->
+    <import resource="S6/voyage/config/beans/beans.xml"/>
+    
+    <!-- BaseAction  -->
+	<bean id="baseAction" class="S6.voyage.struts.BaseAction">
+    	<property name="baseService" ref="baseService" />
+    </bean>
+    
+	<!-- BaseService  -->
+    <bean id="baseService" class="S6.voyage.service.BaseService">
+    	<property name="hibernate" ref="hibernateDao" />
+    </bean>
+    
+    <!-- HibernateDAO -->
+    <bean id="hibernateDao" class="S6.voyage.dao.HibernateDao">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- Database Configuration -->
+    <import resource="S6/voyage/config/spring/DataSource.xml"/>
+    <import resource="S6/voyage/config/spring/HibernateSessionFactory.xml"/>
+
+</beans>

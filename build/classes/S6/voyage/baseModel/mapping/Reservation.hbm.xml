@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="S6.voyage.baseModel.Reservation" table="reservation">
+        <meta attribute="class-description">
+            This class contains the reservation detail.
+        </meta>
+        <id name="id" type="int" column="id_reservation">
+        <generator class="increment"/>
+           <!--  <generator class="identity">
+            	<param name="sequence">reservation_id_reservation_seq</param>
+            </generator> -->
+        </id>
+        <property name="date_debut" column="date_debut" type="java.sql.Date"/>
+        <property name="date_fin" column="date_fin" type="java.sql.Date"/>
+        <property name="id_chambre" column="id_chambre" type="int"/>
+        <property name="id_client" column="id_client" type="int"/>
+        <union-subclass name="S6.voyage.baseModel.ReservationView" table="reservation_view">
+            <property name="nom_chambre" column="nom_chambre" type="string"/>
+            <property name="nom_client" column="nom_client" type="string"/>
+        </union-subclass>
+       <!--  <many-to-one name="chambre" class="S6.voyage.baseModel.Chambre" column="id_chambre" not-null="true" lazy="false"/>
+        <many-to-one name="client" class="S6.voyage.baseModel.Client" column="id_client" not-null="true"  lazy="false"/> -->
+    </class>
+</hibernate-mapping>

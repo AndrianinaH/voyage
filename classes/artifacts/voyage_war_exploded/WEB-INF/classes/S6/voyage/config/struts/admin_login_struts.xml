@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="admin_login" extends="struts-default">
+         <!-- afficher login backoffice  -->
+        <action name="adminConnection" class="baseAction" method="execute">
+            <result name="success">/admin/login.jsp</result>
+        </action>
+        <!-- login  -->
+        <action name="login" class="baseAction" method="login">
+            <result name="error">/admin/login.jsp</result>
+            <result name="login" type="redirectAction">
+                <param name="actionName">destination</param>
+                <param name="parse">false</param>
+            </result>
+        </action>
+        <!-- logout  -->
+        <action name="logout" class="baseAction" method="logout">
+            <result name="success" type="redirectAction">
+                <param name="actionName">adminConnection</param>
+                <param name="parse">false</param>
+            </result>
+        </action>
+        <!-- afficher login frontoffice  -->
+        <action name="clientConnection" class="baseAction" method="signIn">
+            <result name="success">/login.jsp</result>
+        </action>
+         <!-- afficher inscription frontoffice  -->
+        <action name="inscriptionClient" class="baseAction" method="signUp">
+            <result name="success">/inscription.jsp</result>
+        </action>
+         <!--  login client frontoffice  -->
+        <action name="loginClient" class="baseAction" method="loginClient">
+             <result name="error">/login.jsp</result>
+            <result name="login" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="parse">false</param>
+            </result>
+        </action>
+         <!-- logout frontOffice -->
+        <action name="logoutClient" class="baseAction" method="logoutClient">
+            <result name="success" type="redirectAction">
+                <param name="actionName">clientConnection</param>
+                <param name="parse">false</param>
+            </result>
+        </action>
+         <!-- inscription client -->
+        <action name="inscription" class="baseAction" method="create">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">clientConnection</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/inscription.jsp</result>
+        </action> 
+    </package>
+</struts>

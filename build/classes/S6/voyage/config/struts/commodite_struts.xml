@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="commodite" extends="struts-default">
+        <!-- gestion des commodites  -->
+        <action name="commodite" class="commoditeAction" method="find">
+            <result name="success">/admin/commodite.jsp</result>
+            <result name="error">/admin/login.jsp</result>
+        </action>
+        <!-- create -->
+        <action name="createCommodite" class="commoditeAction" method="create">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">commodite</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/admin/commodite.jsp</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action> 
+        <!-- delete -->
+        <action name="deleteCommodite" class="commoditeAction" method="delete">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">commodite</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/admin/commodite.jsp</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action> 
+        <!-- modifier -->
+        <action name="modifierCommodite" class="commoditeAction" method="modifier">
+        	<result name="success">/admin/commodite.jsp</result>
+        	<result name="login">/admin/login.jsp</result>
+        </action> 
+         <!-- edit -->
+        <action name="updateCommodite" class="commoditeAction" method="edit">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">commodite</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action> 
+
+    </package>
+</struts>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="S6.voyage.baseModel.Chambre" table="chambre">
+        <meta attribute="class-description">
+            This class contains the chambre detail.
+        </meta>
+        <id name="id" type="int" column="id_chambre">
+        	<generator class="increment"/>
+            <!-- <generator class="identity">
+            	<param name="sequence">chambre_id_chambre_seq</param>
+            </generator> -->
+        </id>
+        <property name="nom_chambre" column="nom_chambre" type="string"/>
+        <property name="nbr_petit_lit" column="nbr_petit_lit" type="int"/>
+        <property name="nbr_grand_lit" column="nbr_grand_lit" type="int"/>
+        <property name="prix" column="prix" type="double"/>
+        <property name="id_hotel" column="id_hotel" type="int"/>
+        <union-subclass name="S6.voyage.baseModel.ChambreView" table="chambre_view">
+            <property name="nom_hotel" column="nom_hotel" type="string"/>
+        </union-subclass>
+        <!-- <many-to-one name="hotel" class="S6.voyage.baseModel.Hotel" column="id_hotel" not-null="true" insert="false" lazy="false" update="false"/> -->
+    </class>
+</hibernate-mapping>

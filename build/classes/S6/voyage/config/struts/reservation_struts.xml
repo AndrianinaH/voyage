@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="reservation" extends="struts-default">
+        <!-- gestion des reservations  -->
+        <action name="reservation" class="reservationAction" method="find">
+            <result name="success">/admin/reservation.jsp</result>
+            <result name="error">/admin/login.jsp</result>
+        </action>
+        <!-- create -->
+        <action name="createReservation" class="reservationAction" method="create">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">reservation</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/admin/reservation.jsp</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action>
+        <!-- delete -->
+        <action name="deleteReservation" class="reservationAction" method="delete">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">reservation</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/admin/reservation.jsp</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action>
+        <!-- modifier -->
+        <action name="modifierReservation" class="reservationAction" method="modifier">
+        	<result name="success">/admin/reservation.jsp</result>
+        	<result name="login">/admin/login.jsp</result>
+        </action> 
+        <!-- edit -->
+        <action name="updateReservation" class="reservationAction" method="edit">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">reservation</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action>
+
+    </package>
+</struts>

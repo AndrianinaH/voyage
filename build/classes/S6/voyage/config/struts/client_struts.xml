@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="client" extends="struts-default">
+        <!-- gestion des clients  -->
+        <action name="client" class="clientAction" method="find">
+            <result name="success">/admin/client.jsp</result>
+            <result name="error">/admin/login.jsp</result>
+        </action>
+        <!-- create -->
+        <action name="createClient" class="clientAction" method="create">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">client</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/admin/client.jsp</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action> 
+        <!-- delete -->
+        <action name="deleteClient" class="clientAction" method="delete">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">client</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/admin/client.jsp</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action> 
+        <!-- modifier -->
+        <action name="modifierClient" class="clientAction" method="modifier">
+        	<result name="success">/admin/client.jsp</result>
+        	<result name="login">/admin/login.jsp</result>
+        </action> 
+         <!-- edit -->
+        <action name="updateClient" class="clientAction" method="edit">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">client</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="login">/admin/login.jsp</result>
+        </action> 
+
+    </package>
+</struts>

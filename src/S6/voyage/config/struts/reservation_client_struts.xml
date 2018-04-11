@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="reservationClient" extends="struts-default">
+        <!-- gestion des reservations client -->
+               <!--  reservation client  -->
+        <action name="reservationClient" class="detailHotelAction" method="reservationClient">
+            <result name="success">/reservation_client.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">index</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="login">/login.jsp</result>
+        </action>
+        <!-- annulation des reservations du client -->
+        <action name="annulerReservation" class="detailHotelAction" method="delete">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">reservationClient</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="error">/reservation_client.jsp</result>
+           	<result name="login">/login.jsp</result>
+        </action>
+         <!-- modifier reservation client -->
+        <action name="modifierReservationClient" class="detailHotelAction" method="modifReserverClient">
+        	<result name="success">/reservation_client.jsp</result>
+        	<result name="login">/login.jsp</result>
+        </action>
+        <!-- edit reservation client -->
+        <action name="updateReservationClient" class="detailHotelAction" method="updateReservationClient">
+        	<result name="success" type="redirectAction">
+                <param name="actionName">reservationClient</param>
+                <param name="parse">false</param>
+           	</result>
+           	<result name="login">/login.jsp</result>
+        </action>
+
+    </package>
+</struts>
